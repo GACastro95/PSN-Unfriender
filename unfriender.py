@@ -110,7 +110,8 @@ def profile_ids_to_names(jwt_token, profile_ids):
     for i in range(num_chunks + 1):
         start_index = i * chunk_size
 
-        to_return.extend(profile_ids_to_names_chunked(jwt_token, profile_ids, start_index))
+        if profile_ids[start_index:start_index + 100]:
+            to_return.extend(profile_ids_to_names_chunked(jwt_token, profile_ids, start_index))
     return to_return
 
 
